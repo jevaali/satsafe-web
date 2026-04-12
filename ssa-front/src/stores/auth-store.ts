@@ -53,7 +53,7 @@ export const useAuthStore = defineStore('auth', () => {
     operatorType: number,
   ) => {
     try {
-      const res = await api.post<{ jwt: string; refreshToken: string }>('/Account/Register', {
+      const res = await api.post<{ jwt: string; refreshToken: string }>('identity/Account/Register', {
         email,
         password,
         firstname,
@@ -93,7 +93,7 @@ export const useAuthStore = defineStore('auth', () => {
   // LOGIN
   const login = async (email: string, password: string) => {
     try {
-      const res = await api.post<{ jwt: string; refreshToken: string }>('/Account/Login', {
+      const res = await api.post<{ jwt: string; refreshToken: string }>('identity/Account/Login', {
         email,
         password,
       })
@@ -133,7 +133,7 @@ export const useAuthStore = defineStore('auth', () => {
     }
 
     try {
-      //const res = await api.post('/Account/RefreshToken?expiresInSeconds=10',
+      //const res = await api.post('identity/Account/RefreshToken?expiresInSeconds=10',
       const res = await api.post('/Account/RefreshToken', {
         jwt: currentAccessToken,
         refreshToken: currentRefreshToken,
