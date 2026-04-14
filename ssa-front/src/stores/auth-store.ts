@@ -134,7 +134,7 @@ export const useAuthStore = defineStore('auth', () => {
 
     try {
       //const res = await api.post('identity/Account/RefreshToken?expiresInSeconds=10',
-      const res = await api.post('/Account/RefreshToken', {
+      const res = await api.post('identity/Account/RefreshTokenData', {
         jwt: currentAccessToken,
         refreshToken: currentRefreshToken,
       })
@@ -152,6 +152,26 @@ export const useAuthStore = defineStore('auth', () => {
     } catch (err) {
       logout()
       throw err
+    }
+  }
+
+  // DECODE JWT — extract operator/user ID from token claims
+  const getOperatorId = (): string | null => {
+    const token = getAccessToken()
+    if (!token) return null
+    try {
+      const payload = JSON.parse(atob(token.split('.')[1] ?? ''))
+      // .NET Identity uses the nameidentifier claim; also try common alternatives
+      return (
+        payload['http://schemas.xmlsoap.org/ws/2005/05/identity/claims/nameidentifier'] ||
+        payload.sub ||
+        payload.nameid ||
+        payload.userId ||
+        payload.operatorId ||
+        null
+      )
+    } catch {
+      return null
     }
   }
 
@@ -179,6 +199,7 @@ export const useAuthStore = defineStore('auth', () => {
     getAccessToken,
     setAccessToken,
     getRefreshToken,
+    getOperatorId,
     isAuthenticated,
   }
 })

@@ -1,7 +1,8 @@
-import LoginView from '@/views/Login-View.vue'
-import MainView from '@/views/Main-View.vue'
-import RegisterView from '@/views/Register-View.vue'
-import NotFoundView from '@/views/NotFound-View.vue'
+import DashboardView from '@/views/DashboardView.vue'
+import SatelliteView from '@/views/SatelliteView.vue'
+import LoginView from '@/views/LoginView.vue'
+import RegisterView from '@/views/RegisterView.vue'
+import NotFoundView from '@/views/NotFoundView.vue'
 
 import { createRouter, createWebHistory, type RouteRecordRaw } from 'vue-router'
 import { useAuthStore } from '@/stores/auth-store'
@@ -10,7 +11,13 @@ const routes: RouteRecordRaw[] = [
   {
     path: '/',
     name: 'Home',
-    component: MainView,
+    component: DashboardView,
+    meta: { requiresAuth: true },
+  },
+  {
+    path: '/satellites/:id',
+    name: 'Satellite',
+    component: SatelliteView,
     meta: { requiresAuth: true },
   },
   {
@@ -34,7 +41,7 @@ const routes: RouteRecordRaw[] = [
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
-  routes: routes,
+  routes,
 })
 
 router.beforeEach((to) => {

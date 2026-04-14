@@ -1,1 +1,2 @@
-export { default as AppHeader } from './App-Header.vue'
+export { default as AppHeader } from './AppHeader.vue'
+export { default as AppSidebar } from './AppSidebar.vue'
