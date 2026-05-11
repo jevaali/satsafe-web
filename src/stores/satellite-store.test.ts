@@ -253,7 +253,12 @@ describe('remove', () => {
 
 describe('generateRisk', () => {
   it('refreshes list after generating risk', async () => {
-    vi.mocked(SatelliteService.generateRisk).mockImplementation(() => Promise.resolve())
+    vi.mocked(SatelliteService.generateRisk).mockResolvedValue({
+      riskScore: 0.02,
+      riskLevel: 'Low',
+      modelVersion: '1.0.0',
+      calculatedAt: '2024-01-01T00:00:00Z',
+    })
     vi.mocked(SatelliteService.list).mockResolvedValue(mockSatellites)
     const store = useSatelliteStore()
     await store.generateRisk('sat-1')
@@ -262,7 +267,12 @@ describe('generateRisk', () => {
   })
 
   it('also refreshes detail if selectedSatellite matches', async () => {
-    vi.mocked(SatelliteService.generateRisk).mockImplementation(() => Promise.resolve())
+    vi.mocked(SatelliteService.generateRisk).mockResolvedValue({
+      riskScore: 0.02,
+      riskLevel: 'Low',
+      modelVersion: '1.0.0',
+      calculatedAt: '2024-01-01T00:00:00Z',
+    })
     vi.mocked(SatelliteService.list).mockResolvedValue(mockSatellites)
     vi.mocked(SatelliteService.details).mockResolvedValue(mockDetail)
     const store = useSatelliteStore()
@@ -272,7 +282,12 @@ describe('generateRisk', () => {
   })
 
   it('does not refresh detail if selectedSatellite does not match', async () => {
-    vi.mocked(SatelliteService.generateRisk).mockImplementation(() => Promise.resolve())
+    vi.mocked(SatelliteService.generateRisk).mockResolvedValue({
+      riskScore: 0.02,
+      riskLevel: 'Low',
+      modelVersion: '1.0.0',
+      calculatedAt: '2024-01-01T00:00:00Z',
+    })
     vi.mocked(SatelliteService.list).mockResolvedValue(mockSatellites)
     vi.mocked(SatelliteService.details).mockResolvedValue(mockDetail)
     const store = useSatelliteStore()
