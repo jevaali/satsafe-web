@@ -34,6 +34,18 @@ export interface ISatelliteListItem {
   orbit: IOrbit
 }
 
+export interface ITle {
+  satelliteId: string
+  rawLine1: string
+  rawLine2: string
+}
+
+export interface IAddTlePayload {
+  satelliteId: string
+  rawLine1: string
+  rawLine2: string
+}
+
 /** Shape returned by Details endpoint */
 export interface ISatelliteDetail {
   id: string
@@ -43,6 +55,7 @@ export interface ISatelliteDetail {
   status: ESatelliteStatus
   orbit: IOrbit
   riskAssessment?: IRiskAssessment
+  tle?: ITle
 }
 
 export interface ICreateSatellitePayload {

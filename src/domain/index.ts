@@ -21,5 +21,9 @@ export type {
   IRiskAssessment,
   ICreateSatellitePayload,
   IUpdateSatellitePayload,
+  ITle,
+  IAddTlePayload,
 } from './ISatellite.ts'
 export { ESatelliteStatus } from './ISatellite.ts'
+
+export type { IMainList, IMainListSatellite, IMainListDebris } from './IMainList.ts'

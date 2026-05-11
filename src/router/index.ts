@@ -1,5 +1,7 @@
 import DashboardView from '@/views/DashboardView.vue'
 import SatelliteView from '@/views/SatelliteView.vue'
+import SettingsView from '@/views/SettingsView.vue'
+import MainListView from '@/views/MainListView.vue'
 import LoginView from '@/views/LoginView.vue'
 import RegisterView from '@/views/RegisterView.vue'
 import NotFoundView from '@/views/NotFoundView.vue'
@@ -18,6 +20,18 @@ const routes: RouteRecordRaw[] = [
     path: '/satellites/:id',
     name: 'Satellite',
     component: SatelliteView,
+    meta: { requiresAuth: true },
+  },
+  {
+    path: '/catalogue',
+    name: 'Catalogue',
+    component: MainListView,
+    meta: { requiresAuth: true },
+  },
+  {
+    path: '/settings',
+    name: 'Settings',
+    component: SettingsView,
     meta: { requiresAuth: true },
   },
   {

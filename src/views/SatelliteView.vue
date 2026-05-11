@@ -12,6 +12,7 @@ import RiskPanel from '@/components/satellite/RiskPanel.vue'
 import ConjunctionsPanel from '@/components/satellite/ConjunctionsPanel.vue'
 import AlertsPanel from '@/components/satellite/AlertsPanel.vue'
 import SatelliteFormModal from '@/components/satellite/SatelliteFormModal.vue'
+import TlePanel from '@/components/satellite/TlePanel.vue'
 
 const route = useRoute()
 const router = useRouter()
@@ -151,6 +152,11 @@ const onAcknowledgeAlert = async (alertId: string) => {
             :loading="satelliteStore.riskLoading"
             :satellite-id="satelliteId"
             @generate-risk="onGenerateRisk"
+          />
+          <TlePanel
+            :tle="satelliteStore.selectedSatellite.tle"
+            :satellite-id="satelliteId"
+            @updated="satelliteStore.fetchDetails(satelliteId)"
           />
         </div>
 

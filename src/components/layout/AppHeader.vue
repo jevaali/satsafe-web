@@ -9,6 +9,7 @@ const auth = useAuthStore()
 
 const pageTitle = computed(() => {
   if (route.name === 'Home') return 'Fleet Overview'
+  if (route.name === 'Catalogue') return 'Space Catalogue'
   if (route.name === 'Satellite') {
     const name = route.params.name as string
     return name ? decodeURIComponent(name) : 'Satellite'
