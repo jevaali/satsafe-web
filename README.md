@@ -17,6 +17,8 @@ Vue 3 front-end for [SatSafe](https://github.com/jevaali/satsafe), a space situa
 ## Tech
 Vue 3 · TypeScript · Pinia · Vue Router · Axios · Vite
 
+**Tooling:** ESLint · Prettier · Oxlint · GitLab CI · Docker
+
 ## Structure
 ```
 src/
